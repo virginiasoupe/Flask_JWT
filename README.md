@@ -99,10 +99,10 @@ LES ROUTES (API)
 Votre solution est à présent opérationnelle. Vous pouvez testez vos routes (API) comme suit :  
   
 https://{Votre_URL}**/**  
-C'est route pointe sur le fichier d'accuei! accueil.html  
+C'est route pointe sur le fichier d'accueil.html  
 
 https://{Votre_URL}**/login**  
-Génère une clé JWT si vous vous connectez en POST avec les login et password suivant : test/test 
+Génère une clé JWT après s'être connecté en POST avec les login et password suivant : test/test 
 
 https://{Votre_URL}**/protected**  
 Cette route est protégée et accéssible seulement avec un jeton JWT valide.  
