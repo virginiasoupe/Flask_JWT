@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import render_template
 from flask import json
-
 from flask import jsonify
 from flask import request
 
@@ -12,30 +11,28 @@ from flask_jwt_extended import JWTManager
                                                                                                                                        
 app = Flask(__name__)                                                                                                                  
                                                                                                                                        
-# Setup the Flask-JWT-Extended extension
-app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+# Configuration du module JWT
+app.config["JWT_SECRET_KEY"] = "Ma_clé_secrete"  # Ma clée privée
 jwt = JWTManager(app)
 
 
-# Create a route to authenticate your users and return JWTs. The
-# create_access_token() function is used to actually generate the JWT.
+# Création d'une route qui vérifie l'utilisateur et retour un Jeton JWT si ok.
+# La fonction create_access_token() est utilisée pour générer un jeton JWT.
 @app.route("/login", methods=["POST"])
 def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
     if username != "test" or password != "test":
-        return jsonify({"msg": "Bad username or password"}), 401
+        return jsonify({"msg": "Mauvais utilisateur ou mot de passe"}), 401
 
     access_token = create_access_token(identity=username)
     return jsonify(access_token=access_token)
 
 
-# Protect a route with jwt_required, which will kick out requests
-# without a valid JWT present.
+# Route protégée par un jeton valide
 @app.route("/protected", methods=["GET"])
 @jwt_required()
 def protected():
-    # Access the identity of the current user with get_jwt_identity
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
                                                                                                                
