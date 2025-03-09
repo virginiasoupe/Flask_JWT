@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta charset="UTF-8"/>
+<style>img{padding-top:1%;}</style>
+<script>
+function fct(){
+var Result="";
+	for(i=1;i<4;i++){
+	if(document.getElementById('choix'+i).checked){
+Result = Result+'<img width="150px" src="Image'+i+'.jpg"/><br/>';
+		}
+	}
+document.getElementById('zone1').innerHTML = Result;	
+}
+
+</script>
+</head>
+<body>
+<h3>Image(s) à afficher ?</h3><p>
+<input type="checkbox" id="choix1"/>Image 1<br/>
+<input type="checkbox" id="choix2"/>Image 2<br/>
+<input type="checkbox" id="choix3"/>Image 3<br/></p>
+<button onclick="fct()">Afficher</button>
+<div id="zone1"></div>
+</body>
+</html>
