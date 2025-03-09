@@ -16,7 +16,7 @@ app.config["JWT_SECRET_KEY"] = "Ma_clé_secrete"  # Ma clée privée
 jwt = JWTManager(app)
 
 @app.route('/images')
-def hello_world():
+def images():
     return render_template('Correction_Images.html')
 
 @app.route('/')
