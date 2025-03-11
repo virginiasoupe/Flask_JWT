@@ -15,10 +15,6 @@ app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = "Ma_clé_secrete"  # Ma clée privée
 jwt = JWTManager(app)
 
-@app.route('/images')
-def images():
-    return render_template('Correction_Images.html')
-
 @app.route('/')
 def hello_world():
     return render_template('accueil.html')
